@@ -12,11 +12,12 @@
         var sound_value = 0;
         $scope.aux = 1;
         
-        $interval( function(){ $scope.obtenerMediciones(); }, 10000);
+        $interval( function(){ $scope.obtenerMediciones(); }, 30000);
         $scope.obtenerMediciones = function(){
-            RestService.doGet('/led=0')
+            RestService.doGet('/comando=4')
             .then(function (result) {
-                $scope.items[0].value = result.id;
+                $scope.items[0].value = result.temp;
+                $scope.items[0].value = result.humedad;
             }, function (reason) {
                 $scope.msg = {error: reason};
             });

@@ -23,7 +23,7 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate'])
       StatusBar.styleDefault();
     }
 
-            window.plugin.lightsensor.watchReadings(
+/*            window.plugin.lightsensor.watchReadings(
 		    function success(reading){
 		      console.log(JSON.stringify(reading));
 		    //   alert(JSON.stringify(reading)); 
@@ -32,7 +32,7 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate'])
 		    function error(message){
 		    //  console.log(message);
 		    }
-		  );
+		  );*/
 		
     //Load the Pre-populated database, debug = true
     $sqliteService.preloadDataBase(true);
