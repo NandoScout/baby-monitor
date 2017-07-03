@@ -1,0 +1,57 @@
+<ion-side-menus enable-menu-with-back-views="false">
+	<ion-side-menu-content>
+		<ion-nav-bar class="bar-dark">
+			<ion-nav-back-button>
+			</ion-nav-back-button>
+			<ion-nav-buttons side="left">
+				<button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+				</button>
+			</ion-nav-buttons>
+			<ion-nav-buttons side="right">
+				<button class="button button-icon button-clear ion-more" ng-click="openPopover($event)">
+				</button>
+			</ion-nav-buttons>
+		</ion-nav-bar>
+		<ion-nav-view name="viewContent" animation="slide-left-right"></ion-nav-view>
+		<ion-footer-bar align-title="left">
+		<ion-tabs class="tabs-positive tabs-icon-top">
+
+			<ion-tab title="Home" icon-on="ion-ios-filing" icon-off="ion-ios-filing-outline" ui-sref="app.gallery">
+				<!-- Tab 1 content -->
+			</ion-tab>
+
+			<ion-tab title="Panel de Control" icon-on="ion-ios-settings" icon-off="ion-ios-settings-strong" ui-sref="app.controlPanel">
+				<!-- Tab 2 content -->
+			</ion-tab>
+
+			<ion-tab title="Settings" icon-on="ion-ios-gear" icon-off="ion-ios-gear-outline" ui-sref="app.configuracion">
+				<!-- Tab 3 content -->
+			</ion-tab>
+
+			</ion-tabs>
+		</ion-footer-bar>
+	</ion-side-menu-content>
+	<ion-side-menu side="left" class="menu">
+		<ion-header-bar ui-sref="app.gallery" menu-close nav-direction="enter" nav-clear>
+			<ion-item class="item item-thumbnail-left">
+				<img src="img/baby-logo.ico" alt="Fry" class="animated">
+				<h2>Baby</h2>
+				<h2>Monitor</h2>
+			</ion-item>
+		</ion-header-bar>
+		<ion-content class="has-header">
+			<ion-list>
+				<ion-item ng-repeat="item in items" menu-close nav-direction="enter" ui-sref="app.item({ title: item.title, icon: item.icon, color: item.color })" class="item item-icon-right" ui-sref-active="active">
+                    {{item.title}}
+                    <i class="icon ion-chevron-right"></i>
+				</ion-item>
+			</ion-list>
+		</ion-content>
+		<ion-footer-bar class="bar-light">
+			<div class="button-bar">
+				<button class="button button-icon icon ion-home" nav-clear menu-close nav-direction="exit" ui-sref="home">Home</button>
+                <button class="button button-icon icon ion-log-out" on-tap="exitApp()">Exit</button>
+			</div>
+		</ion-footer-bar>
+	</ion-side-menu>
+</ion-side-menus>
