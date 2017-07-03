@@ -3,7 +3,7 @@
     <div class="list">
         
         <div class="item item-divider"> 
-          Opciones
+          Actuadores
         </div>
         
         <ion-toggle ng-model="light.checked" ng-change="toggleLight()">
@@ -14,6 +14,17 @@
         </ion-toggle>
         <ion-toggle ng-model="fan.checked" ng-change="toggleFan()">
           Ventilación
+        </ion-toggle>
+
+        <div class="item item-divider"> 
+          Sensores del teléfono
+        </div>
+        
+        <ion-toggle ng-model="lightSensor.checked" ng-change="toggleLightSensor()">
+          Luminosidad
+        </ion-toggle>
+        <ion-toggle ng-model="shakeSensor.checked" ng-change="toggleShakeSensor()">
+          Shake
         </ion-toggle>
       </list>
   </ion-content>

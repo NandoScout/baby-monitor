@@ -23,16 +23,23 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate'])
       StatusBar.styleDefault();
     }
 
-/*            window.plugin.lightsensor.watchReadings(
-		    function success(reading){
-		      console.log(JSON.stringify(reading));
-		    //   alert(JSON.stringify(reading)); 
-		      // Output: {"intensity": 25}
-		    }, 
-		    function error(message){
-		    //  console.log(message);
-		    }
-		  );*/
+            //  window.plugin.lightsensor.watchReadings(
+            // function success(reading){
+            //     console.log(JSON.stringify(reading));
+            //         // if(reading.intensity<30)
+            //         // {
+            //         //     alert("hay poca luz");
+            //         // }
+            // //   alert(JSON.stringify(reading)); 
+            //     // Output: {"intensity": 25}
+            // }, 
+            // function error(message){
+            // //  console.log(message);
+            // }
+            // );
+
+
+          
 		
     //Load the Pre-populated database, debug = true
     $sqliteService.preloadDataBase(true);
