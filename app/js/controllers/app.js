@@ -17,7 +17,15 @@
             RestService.doGet('/comando=4')
             .then(function (result) {
                 $scope.items[0].value = result.temp;
-                $scope.items[0].value = result.humedad;
+                $scope.items[1].value = result.humedad;
+                if(result.sonido <= 99)
+                    $scope.items[2].value = "Tranquilo";
+                else
+                    $scope.items[2].value = "Ruidoso";
+                $scope.items[3].value = result.pulso;
+                if((result.temp>25||result.temp<16) && (result.pulso> 50 || result.pulso <20) ){
+                    alert("Dirijase a la habitacion y revise a su bebe");
+                }
             }, function (reason) {
                 $scope.msg = {error: reason};
             });
@@ -46,7 +54,7 @@
                 icon: "ion-android-volume-up",
                 title: "Sonido",
                 value: 0,
-                unit: "dB"
+                unit: ""
             },
             {
                 color: "#D86B67",

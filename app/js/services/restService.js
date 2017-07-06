@@ -6,7 +6,8 @@
 	RestService.$inject = ['$q', '$http', '$rootScope'];
 	function RestService($q, $http, $rootScope) {
 
-        var apiURL = "http://192.168.1.99";
+        var apiURL = "http://192.168.10.144";
+        
         return {
             doGet: function (url) {
                 var deferred = $q.defer();

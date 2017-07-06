@@ -1,13 +1,15 @@
 {
   "name": "App",
   "app_id": "22a68333",
-  "v2": false,
-  "typescript": false,
   "watch": {
-    "watch" : "app/**/*",
+    "watch": "app/**/*",
     "livereload": [
       "www/**/*",
       "!www/lib/**/*"
     ]
-  }
+  },
+  "type": "ionic1",
+  "watchPatterns": [
+    "scss/**/*"
+  ]
 }
