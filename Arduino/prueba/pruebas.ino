@@ -9,9 +9,9 @@
  */
 
 byte led = 9;           // the pin that the LED is attached to
-byte brightMin = 10;    // how bright the LED is
+byte brightMin = 0;    // how bright the LED is
 int brightness = (int)brightMin;    // how bright the LED is
-int fadeAmount = 5;    // how many points to fade the LED by
+int fadeAmount = 10;    // how many points to fade the LED by
 unsigned long ya = millis();
 byte estPin[13] = {0,0,0,0,0,0,0,0,0,0,0,0,0};
 unsigned long tiePin[13] = {ya,ya,ya,ya,ya,ya,ya,ya,ya,ya,ya,ya,ya};
@@ -51,9 +51,6 @@ void loop() {
   Serial.print("\tBRILLO: ");
   Serial.println(brightness);
   Serial.println(fadeAmount);
-    
-  // set the brightness of pin 9:
-  analogWrite(led, brightness);
 
   // change the brightness for next time through the loop:
   brightness = brightness + fadeAmount;
@@ -62,11 +59,14 @@ void loop() {
   if (brightness <= brightMin || brightness >= 255) {
     fadeAmount = -fadeAmount ;
     if (brightness >= 255) {
-      delay(200);
+      brightness = 255;
     }else{
-      delay(300);
+      brightness = brightMin;
     }
   }
+    
+  // set the brightness of pin 9:
+  analogWrite(led, brightness);
   // wait for 30 milliseconds to see the dimming effect
-  delay(30);
+  delay(1);
 }
