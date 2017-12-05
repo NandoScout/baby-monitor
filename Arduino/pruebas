@@ -1,5 +1,6 @@
 /*
- Fade
+ PRUEBAS
+ Fade de Led
 
  This example shows how to fade an LED on pin 9
  using the analogWrite() function.
@@ -9,8 +10,8 @@
 
 byte led = 9;           // the pin that the LED is attached to
 byte brightMin = 10;    // how bright the LED is
-int brightness = brightMin;    // how bright the LED is
-byte fadeAmount = 5;    // how many points to fade the LED by
+int brightness = (int)brightMin;    // how bright the LED is
+int fadeAmount = 5;    // how many points to fade the LED by
 unsigned long ya = millis();
 byte estPin[13] = {0,0,0,0,0,0,0,0,0,0,0,0,0};
 unsigned long tiePin[13] = {ya,ya,ya,ya,ya,ya,ya,ya,ya,ya,ya,ya,ya};
@@ -46,8 +47,11 @@ void setup() {
 void loop() {
   Serial.print("YA: ");
   ya = millis();
-  Serial.println(ya);  
-  
+  Serial.print(ya);  
+  Serial.print("\tBRILLO: ");
+  Serial.println(brightness);
+  Serial.println(fadeAmount);
+    
   // set the brightness of pin 9:
   analogWrite(led, brightness);
 
