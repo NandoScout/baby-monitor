@@ -70,9 +70,9 @@ private:
 Scheduler sched; // Create a global Scheduler object
 
 // Create our blink processes
-BlinkProcess blink250(sched, HIGH_PRIORITY, 250, 13); // Blink 13 every 250 ms
-BlinkProcess blink500(sched, HIGH_PRIORITY, 500, 12); // Blink 12 every 500 ms
-BlinkProcess blink1000(sched, HIGH_PRIORITY, 1000, 11); // Blink 11 every 1000 ms
+BlinkProcess blink250(sched, HIGH_PRIORITY, 1010, 13); // Blink 13 every 250 ms
+BlinkProcess blink500(sched, HIGH_PRIORITY, 1020, 12); // Blink 12 every 500 ms
+BlinkProcess blink1000(sched, HIGH_PRIORITY, 1030, 11); // Blink 11 every 1000 ms
 
 void setup()
 {
