@@ -100,28 +100,18 @@ protected:
         }
         // variar un Step
         _value = _value + _valueStep;
-        // alcanza un valor extremo
-        if (_value <= _valueMin || _value >= _valueMax) {
-            _valueStep = -_valueStep;
-            if (_value >= _valueMax) {
-                _value = _valueMax;
-                if (_delayMax > 0 ) {
-                    this->setPeriod(_delayMax);
-                }
-            } else if (_value <= _valueMin) {
-                _value = _valueMin;
-                if (_delayMin > 0 ) {
-                    this->setPeriod(_delayMin);
-                }
-            }
+        // evaluar limites -> igualar valor extremo + cambio de sentido Step
+        if (evaluateLimit()){
+            // es un limite
+        } else {
+            // no es un limite
         }
-        // If pin is on turn it off, otherwise turn it on
+        // variacion del led
         analogWrite(_pin, _value);
-        // esta deteniendo -> detener
-        if (_stopping && (_value > _stopValue - abs(_valueStep) && _value < _stopValue + abs(_valueStep))){
-            _value = _stopValue;
-            this->disable();
-        }
+        // evaluar detencion segun modo
+        evaluateMode();
+        // deshabilitar en condicion de stop
+        evaluateStop();
     }
 
 private:
@@ -153,6 +143,27 @@ private:
         }
     }
 
+    int evaluateLimit()
+    {
+      // alcanza un valor extremo
+        if (_value <= _valueMin || _value >= _valueMax) {
+            _valueStep = -_valueStep;
+            if (_value >= _valueMax) {
+                _value = _valueMax;
+                if (_delayMax > 0 ) {
+                    this->setPeriod(_delayMax);
+                }
+            } else if (_value <= _valueMin) {
+                _value = _valueMin;
+                if (_delayMin > 0 ) {
+                    this->setPeriod(_delayMin);
+                }
+            }
+            return true;
+        } else
+            return false;
+    }
+
     void evaluateMode()
     {      
         switch(_mode) {
@@ -165,6 +176,15 @@ private:
               if (_value == _valueMin)
                   _stopping =  true;
               break;
+        }
+    }
+
+    void evaluateStop()
+    {
+        // stopping y valor en stopValue -> detener
+        if (_stopping && (_value > _stopValue - abs(_valueStep) && _value < _stopValue + abs(_valueStep))){
+            _value = _stopValue;
+            this->disable();
         }
     }
 };
